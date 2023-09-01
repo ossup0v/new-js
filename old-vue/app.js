@@ -19,7 +19,8 @@ const app = Vue.createApp({
                 { category: 'taxi', amountUSD: 200, imagePath: 'assets/taxi.png', isFavorite:true },
                 { category: 'invest', amountUSD: -50, imagePath: 'assets/invest.png', isFavorite:true },
                 { category: 'other', amountUSD: 9999, imagePath: 'assets/other.png', isFavorite:false },
-            ]
+            ],
+            totalExspenses: 0
         }
     },
     methods: {
@@ -53,6 +54,14 @@ const app = Vue.createApp({
         },
         notFavoriteExspenses() {
             return this.exspenses.filter((x) => !x.isFavorite);
+        },
+        getTotalExspenses() {
+            totalExspenses = 0;
+            for (let index = 0; index < this.exspenses.length; index++) {
+                const element = this.exspenses[index];
+                totalExspenses += element.amountUSD;
+            }
+            return totalExspenses;
         }
     }
 })

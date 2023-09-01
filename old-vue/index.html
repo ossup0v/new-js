@@ -46,6 +46,8 @@
             <span v-else>Show</span>
         </button>
         <div v-show="show">
+            <h2>Total {{ getTotalExspenses }}</h2>
+
             <ul>
                 <li @click="toggleFavorite(exspense)" v-for="exspense in favoriteExspenses" :class="{favorite:exspense.isFavorite}">
                     <img :src="exspense.imagePath" :alt="exspense.category" width="70" height="70">
