@@ -22,10 +22,20 @@ const labels = [
 const data = {
   labels: labels,
   datasets: [{
-    label: 'My first dataset',
+    label: 'hole',
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45]
+    data: [1, 10, 5, 2, 20, 30, 45]
+  }, {
+    label: 'ass',
+    backgroundColor: 'rgb(10, 99, 132)',
+    borderColor: 'rgb(10, 99, 55)',
+    data: [5, 20, 3, 10, 40, 35, 15]
+  }, {
+    label: 'QWE',
+    backgroundColor: 'rgb(100, 99, 132)',
+    borderColor: 'rgb(100, 99, 55)',
+    data: [5, 55, 9, 15, 22, 0, 6]
   }]
 };
 

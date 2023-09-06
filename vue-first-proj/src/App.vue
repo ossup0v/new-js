@@ -10,17 +10,20 @@
   </div>
   <Show v-if="showToggleFlag" />
   <Input v-if="inputToggleFlag" />
+  <ServerApi />
 </template>
 
 <script>
 import Show from './components/Show.vue'
 import Input from './components/Input.vue'
+import ServerApi from './network/ServerApi.vue'
 
 export default {
   name: 'App',
   components: {
     Show,
-    Input
+    Input,
+    ServerApi
   },
   data() {
     return {
