@@ -1,4 +1,8 @@
 using System.Text.Json.Serialization;
+using MongoDB.Driver;
+using TestVue.InternalApi.Configs;
+using TestVue.InternalApi.Repositories;
+using TestVue.Repositories;
 
 namespace TestVue;
 
@@ -29,7 +33,18 @@ namespace TestVue;
                             .AllowAnyMethod();
                     });
             });
+            
+            // databases
+            services.AddSingleton<IMongoDatabase>(provider =>
+            {
+                var config = Configuration.GetSection("MongoDbConfig").Get<MongoDbConfig>() ?? throw new Exception("Can't find mongo config!");
+                var client = new MongoClient(config.ConnectionUri);
+                return client.GetDatabase(config.DatabaseName);
+            });
+            services.AddSingleton<ITestRepository, TestMongoRepository>();
 
+            services.Configure<MongoDbConfig>(Configuration.GetSection(MongoDbConfig.Section));
+            
             services.AddHttpClient();
         }
 
