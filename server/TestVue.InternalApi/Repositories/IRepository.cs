@@ -9,4 +9,5 @@ public interface IRepository<TObject, TId>
     TObject? GetSync(TId id);
     Task Set(TObject obj);
     Task<TObject[]> GetAll();
+    Task<TObject[]> GetAll(Func<TObject, bool> predicate);
 }

@@ -33,4 +33,9 @@ public abstract class MongoRepositoryBase<TObject, TId> : IRepository<TObject, T
         // TODO rewrite. use only 'ToArray'
         return (await (await Collection.FindAsync(x => true)).ToListAsync()).ToArray();
     }
+    
+    public async Task<TObject[]> GetAll(Func<TObject, bool> predicate) {
+        // TODO rewrite. use only 'ToArray'
+        return (await (await Collection.FindAsync(x => predicate(x))).ToListAsync()).ToArray();
+    }
 }

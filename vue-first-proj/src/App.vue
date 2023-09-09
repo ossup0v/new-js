@@ -1,34 +1,35 @@
 <template>
-  <div v-if="!inputToggleFlag">
-    <button @click="showToggle" v-if="!showToggleFlag">Show</button>
-    <button @click="showToggle" v-else>Close</button>
+  <div>
+    <div v-if="!inputToggleFlag">
+      <button @click="showToggle" v-if="!showToggleFlag">Show</button>
+      <button @click="showToggle" v-else>Close</button>
+    </div>
+
+    <div v-if="!showToggleFlag">
+      <button @click="inputToggle" v-if="!inputToggleFlag">Input</button>
+      <button @click="inputToggle" v-else>Close</button>
+    </div>
   </div>
 
-  <div v-if="!showToggleFlag">
-    <button @click="inputToggle" v-if="!inputToggleFlag">Input</button>
-    <button @click="inputToggle" v-else>Close</button>
-  </div>
   <Show v-if="showToggleFlag" />
   <Input v-if="inputToggleFlag" />
-  <ServerApi />
 </template>
 
 <script>
 import Show from './components/Show.vue'
 import Input from './components/Input.vue'
-import ServerApi from './network/ServerApi.vue'
 
 export default {
   name: 'App',
   components: {
     Show,
-    Input,
-    ServerApi
+    Input
   },
   data() {
     return {
       showToggleFlag: false,
       inputToggleFlag: false,
+      testInput: 'TestInput'
     }
   },
   methods: {
@@ -50,5 +51,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background: #11304f;
 }
 </style>

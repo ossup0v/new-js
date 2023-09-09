@@ -41,7 +41,7 @@ namespace TestVue;
                 var client = new MongoClient(config.ConnectionUri);
                 return client.GetDatabase(config.DatabaseName);
             });
-            services.AddSingleton<ITestRepository, TestMongoRepository>();
+            services.AddSingleton<ISpendingRepository, SpendingMongoRepository>();
 
             services.Configure<MongoDbConfig>(Configuration.GetSection(MongoDbConfig.Section));
             
